@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>東花浪人季 | 首頁</title>
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <nav class="navbar fixed-top navbar-expand-lg"> <a class="navbar-brand ms-3" href="#"><img
+                        src="img/logo.png" alt="" height="70px"></a>
+                <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
+                    aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a href="#p2" class="nav-link"><i class="fa fa-circle-info"></i> 浪人週誌</a>
+                        </li>
+                        <li class="nav-item"><a href="#p4" class="nav-link"><i class="fa fa-users"></i> 浪人同行</a></li>
+                        <li class="nav-item"><a href="#p3" class="nav-link"><i class="fa fa-cart-shopping"></i> 浪人選藝</a>
+                        </li>
+                        <li class="nav-item"><a href="#p5" class="nav-link"><i class="fa fa-magnifying-glass"></i>
+                                認識浪人</a></li>
+                        <li class="nav-item"><a href="#p6" class="nav-link"><i class="fa fa-shoe-prints"></i> 留下足跡</a>
+                        </li>
+                    </ul>
+                    <form class="ms-auto me-3">
+                        <li class="nav-item"><a href="javascript:void(0)" class="nav-link" data-bs-toggle="modal"
+                                data-bs-target="#Ballot"><i class="fa fa-square-poll-vertical"></i> 投票</a>
+                        </li>
+                        <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-house"></i></a></li>
+                        <li class="nav-item"><a href="javascript://"
+                                onclick="window.open('index.html','_blank','top=100,left=200,width=500,height=700')"
+                                class="nav-link"><i class="fa fa-mobile"></i></a></li>
+                    </form>
+                </div>
+            </nav>
+        </header>
+        <section class="p1">
+            <div class="p1m">
+                <div class="title">
+                    <h1>東花浪人季</h1>
+                    <hr style="border: 3px solid #fff;">
+                    <h5><span>最新活動！快點擊上方投票按鈕選出最代表東花浪人的活動藝術品！！</span><br>
+                        活動提醒：踏入浪人季前，距離盛典只剩下 8 天！準備迎接 3 月起一場充滿藝術與文化的盛會！<br>活動消息：3 月 3
+                        日將迎來來自巴黎藝術學院的代表，與我們練習生分享藝術視野。<br>藝點亮：3 月 12 日，我們驕傲地宣布，世界知名藝術家草間彌生將親自指導學生藝術創作歷程！
+                    </h5>
+                    <button class="btn btn-a" data-bs-toggle="modal" data-bs-target="#News"><i class="fa fa-plus"></i>
+                        More</button>
+                </div>
+            </div>
+            <div class="time">2024 年 3 月份，共 4 週。</div>
+
+        </section>
+        <div class="modal" id="News" role="dialog">
+            <div class="modal-lg modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 v-bind:style="{'color':nnnewss.c}">活動詳情</h4>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body" v-for="doing in doings">
+                        <h5 class="fw-bold" style="color: #e6740a;">{{doing.t}}</h5>
+                        <p>{{doing.d1}}</p>
+                        <hr>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn text-light" data-bs-dismiss="modal"
+                            v-bind:style="{'background-color':nnnewss.c}">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="p2" id="p2">
+            <img class="p1m1" src="./img/p1m1.png" alt="">
+
+            <div class="container">
+                <div class="title">
+                    <h1 class="header1">浪人週誌</h1>
+                    <hr style="border: 3px solid #e6740a; width: 25%;">
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-12" v-for="(nnnew,index) in nnnews.slice(PS,PS + HP)">
+                        <div class="card" v-bind:style="{'box-shadow':nnnew.sd}">
+                            <div class="card-body">
+                                <h4 class="card-title fw-bold" v-bind:style="{'color':nnnew.c}">{{nnnew.t}}</h4>
+                                <div class="sd">
+                                    <div class="card-white"></div>
+                                </div>
+                                <img class="card-img" :src="nnnew.img1" alt="">
+                                <div class="ib2 ac">
+                                    <button class="share" v-bind:style="{'color':nnnew.c}"><i
+                                            class="fa fa-share-alt ic"></i></button>
+                                    <button class="like" v-bind:style="{'color':nnnew.c}"><i
+                                            class="fa fa-heart ic"></i></button>
+                                </div>
+                                <div class="card-text fw-bold">{{nnnew.d1}}</div>
+                                <button class="btn text-light" @click="nnnewIndex=nnnew.id"
+                                    v-bind:style="{'background-color':nnnew.c}" data-bs-toggle="modal"
+                                    data-bs-target="#NM"><i class="fa fa-plus"></i> More</button>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="pagination btn-p2 ac">
+                        <li class="page-item" v-bind:class="{'disabled': (FP === 1)}" @click.prevent="SP(FP - 1)"><a
+                                href="#" class="page-link"><i class="fa fa-angle-left"></i></a></li>
+                        <li class="page-item" v-bind:class="{'disabled': (FP === TP)}" @click.prevent="SP(FP + 1)">
+                            <a href="#" class="page-link"><i class="fa fa-angle-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <div class="modal" id="NM" role="dialog">
+            <div class="modal-lg modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 v-bind:style="{'color':nnnewss.c}">{{nnnewss.main}}</h4>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 v-bind:style="{'color':nnnewss.c}"><i class="fa fa-bell"></i> {{nnnewss.t}}</h4>
+                        <img :src="nnnewss.img1" alt="" width="100%">
+                        <hr>
+                        <h5>{{nnnewss.tit1}}</h5>
+                        <p>{{nnnewss.t1}}</p>
+                        <hr>
+                        <h5>{{nnnewss.tit2}}</h5>
+                        <p>{{nnnewss.t2}}</p>
+                        <hr>
+                        <h5>{{nnnewss.tit3}}</h5>
+                        <p>{{nnnewss.t3}}</p>
+                        <hr>
+                        <h5>{{nnnewss.tit4}}</h5>
+                        <p>{{nnnewss.t4}}</p>
+                        <hr>
+                        <h5>{{nnnewss.tit5}}</h5>
+                        <p>{{nnnewss.t5}}</p>
+                        <hr>
+                        <h5>{{nnnewss.tit6}}</h5>
+                        <p>{{nnnewss.t6}}</p>
+                        <hr>
+                        <h5>{{nnnewss.tit7}}</h5>
+                        <p>{{nnnewss.t7}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn text-light" v-bind:style="{'background-color':nnnewss.c}"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg">
+            <section class="p4" id="p4">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <img class="post4" :src="sale.img1" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="side side-r">
+                                <div class="b1 tc">
+                                    <h1 class="header1">浪人同行</h1>
+                                </div>
+                                <div class="btn-p4 ac">
+                                    <img src="./img/i-1.png" alt="" width="100%" @click="saleIndex=0">
+                                    <img src="./img/i-2.png" alt="" width="100%" @click="saleIndex=1">
+                                    <img src="./img/i-3.png" alt="" width="100%" @click="saleIndex=2">
+                                </div>
+                                <div class="btn-p4 ac">
+                                    <img src="./img/i-4.png" alt="" width="100%" @click="saleIndex=3">
+                                    <img src="./img/i-5.png" alt="" width="100%" @click="saleIndex=4">
+                                    <img src="./img/i-6.png" alt="" width="100%" @click="saleIndex=5">
+                                </div>
+                                <div class="btn-p4 ac">
+                                    <img src="./img/i-7.png" alt="" width="100%" @click="saleIndex=6">
+                                    <img src="./img/i-8.png" alt="" width="100%" @click="saleIndex=7">
+                                    <img src="./img/i-9.png" alt="" width="100%" @click="saleIndex=8">
+                                </div>
+                                <div class="btn-p4 ac">
+                                    <img src="./img/i-10.png" alt="" width="100%" @click="saleIndex=9">
+                                    <img src="./img/i-11.png" alt="" width="100%" @click="saleIndex=10">
+                                    <img src="./img/i-12.png" alt="" width="100%" @click="saleIndex=11">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section class="p3" id="p3">
+            <div class="title">
+                <h1 class="header1">浪人選藝</h1>
+                <p class="header2">各式各樣豐富多元的藝術教學課程，快跟著我們藝起踏上藝術之旅</p>
+            </div>
+            <div class="container-fluid tc">
+                <div class="row ac">
+                    <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner inner3" role="listbox">
+                            <div class="carousel-item item3" data-bs-interval="4000"
+                                v-for="(product1,index1) in products.slice(0,5)">
+                                <div class="ac col-xl-3 col-lg-4 col-md-6 col-sm-12"
+                                    v-for="product in products.slice(index1,index1+4)">
+                                    <div class="card">
+                                        <img class="card-img" :src="product.img1" alt="">
+                                        <img class="card-bg" src="img/p3-card.png" alt="">
+                                        <div class="set">{{product.set}}</div>
+                                        <div class="card-body">
+                                            <fieldset>
+                                                <h4 class="card-title">{{product.t}}</h4>
+                                                <div class="price"><i class="fa fa-tag"></i> {{product.price}}</div>
+                                                <div class="card-text">{{product.d1}}</div>
+                                                <button class="btn math" @click="minus(product)"><i
+                                                        class="fa fa-minus"></i></button>
+                                                <span class="as">{{product.as}}</span>
+                                                <button class="btn math" @click="add(product)"><i
+                                                        class="fa fa-plus"></i></button>
+                                                <button class="btn shop" @click="toCart(product)"><i
+                                                        class="fa fa-cart-shopping"></i>加入購物車</button>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="modal" id="Shopmodal" role="dialog">
+            <div class="modal-lg modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>浪人選藝 - 課程報名</h4>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body tc">
+                        <table border="1" style="border: none;" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td>項目名稱</td>
+                                    <td>單價</td>
+                                    <td>場次</td>
+                                    <td>小計</td>
+                                    <td>移除</td>
+                                </tr>
+                                <tr v-for="product in productss">
+                                    <td>{{product.t}}</td>
+                                    <td>{{product.price}}</td>
+                                    <td>{{product.amount}}</td>
+                                    <td>{{product.sum}}</td>
+                                    <td><button class="btn cart-del" @click="remove(product)"><i
+                                                class="fa fa-trash"></i></button></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">總參加場數 {{num}}</td>
+                                    <td colspan="3">總計 $ {{total}}</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="Ballot" role="dialog">
+            <div class="modal-lg modal-dialog" style="max-width: 50%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>東花票選</h4>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body tc">
+                        <table border="1" style="border: none;" width="100%">
+                            <tr>
+                                <td colspan="5" class="fw-bold">你覺得哪個作品最具有代表性？</td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr v-for="vote in votes">
+                                <td width="50%"><img :src="vote.img" alt=""></td>
+                                <td width="10%"><button class="btn btn-v" @click="toVote(vote)">{{vote.b1}}</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-o" data-bs-toggle="modal" data-bs-target="#Votemodal">查看結果</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="Votemodal" role="dialog">
+            <div class="modal-lg modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>票選結果</h4>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body tc">
+                        <table border="1" style="border: none;" width="100%">
+                            <tr>
+                                <td>參賽作品</td>
+                                <td>票選結果</td>
+                            </tr>
+                            <tr v-for="vote in votess">
+                                <td width="50%"><img :src="vote.img" alt="" width="300px" height="300px"></td>
+                                <td>
+                                    <div class="bar" v-bind:style="{'width':calcWidth(vote.amount) + '%'}"></div>
+                                </td>
+                                <td>{{vote.num}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-o" data-bs-toggle="modal" data-bs-target="#Ballot">返回上一頁</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="p5" id="p5">
+            <div class="container" style="padding-top: 200px;">
+                <div class="row">
+                    <div class="ac col-md-3">
+                        <h1 class="header1">認識浪人</h1>
+                    </div>
+                    <div class="col-md-3" v-for="(photo,index) in photos.slice(PS5,PS5 + HP5)">
+                        <div class="card-img">
+                            <a href="" data-bs-toggle="modal" data-bs-target="#Photo" @click="photoIndex=photo.id">
+                                <img :src="photo.img1" alt="" width="100%">
+                            </a>
+                        </div>
+                        <div class="card-footer tc">
+                            {{photo.t}}
+                        </div>
+                    </div>
+                    <div class="ac col-md-3"><i class="fa fa-images" style="font-size: 150px;color: #0a6847;"></i></div>
+                </div>
+                <ul class="pagination btn-p5 ac" style="margin-top: 50px;padding-bottom: 100px;">
+                    <li class="page-item" v-for="n in TP5" v-bind:class="{'active':(FP5 === (n))}"
+                        @click.prevent="SP5(n)"><a href="#" class="page-link">第{{n}}頁</a></li>
+                </ul>
+            </div>
+        </section>
+        <div class="modal" id="Photo" role="dialog">
+            <div class="modal-lg modal-dialog" style="max-width: 50%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>{{photoss.t}}</h4>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="photos" class="carousel slide">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img :src="photoss.img1" alt="" width="100%">
+                                </div>
+                                <div class="carousel-item">
+                                    <img :src="photoss.img2" alt="" width="100%">
+                                </div>
+                                <button class="carousel-control-prev" data-bs-target="#photos" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </button>
+                                <button class="carousel-control-next" data-bs-target="#photos" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <hr>
+                        <p>{{photoss.d1}}</p>
+                        <hr>
+                        <p>{{photoss.d2}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="p6" id="p6">
+            <div class="container">
+                <div class="title tc">
+                    <h1 class="header1">留下足跡</h1>
+                    <p class="header2">你該在這裡留下一點蹤跡</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5 col-sm-12">
+                        <div class="cC" id="cC">
+                            <i class="fa fa-comments"></i> 訊息<br>
+                            <b>| Eva (aaa@gmail.com)：</b><br>
+                            我下次要帶更多人來！
+                        </div>
+                    </div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="cC">
+                            <form>
+                                <h3>表達意見</h3>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="name"><i class="fa fa-user"></i>|暱稱|</label>
+                                    <input type="name" id="Name" class="form-control" placeholder="請輸入名字">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email"><i class="fa fa-envelope"></i>|電子郵件|</label>
+                                    <input type="email" id="Email" class="form-control" placeholder="請輸入電子郵件">
+                                </div>
+                                <div class="form-group">
+                                    <label for="text"><i class="fa fa-comment"></i>|留言|</label>
+                                    <textarea type="text" id="Text" class="form-control" placeholder="請輸入留言"></textarea>
+                                </div>
+                                <div class="tc">
+                                    <button class="btn btn-o" type="submit" onclick="addComment()"><i
+                                            class="fa fa-paper-plane"></i>送出留言</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container-fluid tc">
+                <div class="row text-light">
+                    <div class="col-lg-4">
+                        <h4>訂閱我們</h4><br><br>
+                        <p>想在第一時間收到有關本次活動的最新資訊嗎？快來訂閱我們的電子報！</p>
+                        <form id="send">
+                            <div class="form-group">
+                                <label for="email"><i class="fa fa-envelope"></i></label><br>
+                                <input type="email" class="form-control" placeholder="請輸入電子郵件">
+                            </div>
+                            <button class="btn btn-o" type="submit"><i class="fa fa-paper-plane"></i>
+                                訂閱</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-4">
+                        <h4>聯繫我們</h4><br><br>
+                        <p>如果您有任何疑問或需要更多資訊，請聯繫我們：</p>
+                        <p>電話：0800-514-914 有藝術，有意思！<br><br>
+                            電子郵件：service@mbae.edu.tw<br><br>
+                            網站：www.ewlwf-art.edu.tw</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h4>關注我們</h4><br><br>
+                        <p>請在社交媒體上關注我們，獲取最新「東花浪人季」活動更新和精彩照片：</p>
+                        <p><i class="fab fa-facebook"></i> 東花浪人季官方粉絲頁 | <i class="fab fa-instagram"></i> 讓仁藝術實驗學校</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="pop-up tc">
+            <div class="shared rounded-circle text-light">
+                <i class="fa fa-share-alt"></i>
+                <h4>成功複製連結</h4>
+            </div>
+            <div class="liked rounded-circle text-light">
+                <i class="fa fa-heart"></i>
+                <h4>成功加入最愛</h4>
+            </div>
+            <div class="check rounded-circle text-light">
+                <i class="fa fa-check"></i>
+                <h4>成功訂閱電子報</h4>
+            </div>
+            <div class="shopped rounded-circle text-light">
+                <i class="fa fa-cart-shopping"></i>
+                <h4>成功加入購物車</h4>
+            </div>
+        </div>
+        <div class="icon cart-icon" style="bottom: 1.2rem;">
+            <a href="javascript:void(0)" class="rounded-circle text-light" data-bs-toggle="modal"
+                data-bs-target="#Shopmodal"><i class="fa fa-cart-shopping"></i></a>
+            <span class="rounded-circle text-light">{{num}}</span>
+        </div>
+        <div class="icon comments-icon" style="bottom: 6.8rem;">
+            <a href="javascript:void(0)" class="rounded-circle text-light"><i class="fa fa-robot"></i></a>
+        </div>
+        <div class="icon top-icon" style="bottom: 12.4rem;">
+            <a href="#" class="rounded-circle text-light"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <div class="robot" id="robot">
+            <div class="top" id="r-c">
+                <p><i class="fa fa-user"></i>你有關於本次活動的問題但不知道該向誰發問嗎？歡迎在下方提問</p>
+            </div>
+            <div class="bottom">
+                <input type="text" id="say" size="25" onkeydown="keyin(event)">
+                <div class="fa fa-angle-right" id="enter" onclick="enterl(13)"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/all.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/index-vue.js"></script>
+</body>
+
+</html>
